@@ -66,7 +66,9 @@ class ExternalGLThread(private val surfaceTexture: SurfaceTexture,
                     Log.d(LOG_TAG, egl!!.eglGetError().toString())
                 }
             }
-            val waitDelta = 16 - (System.currentTimeMillis() - loopStart)
+
+            // 2fps
+            val waitDelta = 500 - (System.currentTimeMillis() - loopStart)
             if (waitDelta > 0) {
                 try {
                     Thread.sleep(waitDelta)
