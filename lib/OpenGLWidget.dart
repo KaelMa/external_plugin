@@ -7,12 +7,12 @@ import 'package:flutter/widgets.dart';
 class OpenGLWidget extends StatefulWidget {
   OpenGLWidget({
     Key key,
-    this.width,
-    this.height
+    this.width = 200,
+    this.height = 200
   }):super(key:key);
 
-  var width = 200;
-  var height = 200;
+  var width;
+  var height;
 
   @override
   State<StatefulWidget> createState() {
@@ -24,18 +24,21 @@ class _TextureState extends State<OpenGLWidget> {
 
   final _externalPlugin = ExternalPlugin();
 
-
   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
+    initPlugin();
+  }
+
+  void initPlugin() async {
     await _externalPlugin.initialize(widget.width, widget.height);
     setState(() {});
   }
 
   @override
-  Future<void> dispose() async {
+  Future<void> dispose() {
     super.dispose();
-    await _externalPlugin.dispose();
+    _externalPlugin.dispose();
   }
 
   @override
