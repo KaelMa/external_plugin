@@ -11,8 +11,8 @@ class OpenGLWidget extends StatefulWidget {
     this.height
   }):super(key:key);
 
-  var width = 200.0;
-  var height = 200.0;
+  var width = 200;
+  var height = 200;
 
   @override
   State<StatefulWidget> createState() {
@@ -41,8 +41,8 @@ class _TextureState extends State<OpenGLWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.width,
-      height: widget.height,
+      width: widget.width.toDouble(),
+      height: widget.height.toDouble(),
       child: _externalPlugin.isInitialized
           ? Texture(textureId: _externalPlugin.textureId)
           : Container(color: Colors.blue)

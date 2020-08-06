@@ -10,7 +10,7 @@ class ExternalPlugin {
   bool get isInitialized => textureId != null;
 
   /// 初始化textureId
-  Future<int> initialize(double width, double height) async {
+  Future<int> initialize(int width, int height) async {
     textureId = await _channel.invokeMethod('create', {
       'width': width,
       'height': height,
